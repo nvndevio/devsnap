@@ -45,10 +45,17 @@ async function setup() {
   const packageJsonPath = path.join(cwd, "package.json");
 
   if (fs.existsSync(packageJsonPath)) {
+    let cmdManager = packageManager;
     if (!isPackageManagerInstalled(packageManager)) {
-      console.log(chalk.yellow(`⚠ ${packageManager} not found. Install it or use another manager.`));
-    } else {
-      const [cmd, ...args] = getInstallCommand(packageManager);
+      if (packageManager !== "npm" && isPackageManagerInstalled("npm")) {
+        console.log(chalk.yellow(`⚠ ${packageManager} not found, using npm instead.`));
+        cmdManager = "npm";
+      } else {
+        console.log(chalk.yellow(`⚠ ${packageManager} not found. Install it or use another manager.`));
+      }
+    }
+    if (cmdManager && isPackageManagerInstalled(cmdManager)) {
+      const [cmd, ...args] = getInstallCommand(cmdManager);
       console.log(chalk.gray(`Running ${cmd} ${args.join(" ")}...`));
       const result = await runCommand(cmd, args, { cwd });
       if (result.success) {
