@@ -1,0 +1,6 @@
+{
+  "node": "auto",
+  "packageManager": "auto",
+  "env": ".env.example",
+  "setup": []
+}
