@@ -1,6 +1,6 @@
 {
   "name": "devsnap",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Capture and reproduce development environments with one command.",
   "main": "src/config.js",
   "bin": {
