@@ -5,7 +5,7 @@ const { program } = require("commander");
 program
   .name("devsnap")
   .description("Capture and reproduce development environments with one command.")
-  .version("0.1.0");
+  .version("0.1.1");
 
 program
   .command("init")

@@ -1,12 +1,9 @@
-const { execaSync } = require("execa");
-
 function detectNodeVersion() {
-  try {
-    const { stdout } = execaSync("node", ["--version"], { encoding: "utf-8" });
-    return stdout.trim().replace(/^v/, "");
-  } catch {
-    return null;
+  // DevSnap runs inside Node, so use process.version (reliable with npx/npm)
+  if (typeof process !== "undefined" && process.version) {
+    return process.version.replace(/^v/, "");
   }
+  return null;
 }
 
 function parseNodeVersion(versionString) {

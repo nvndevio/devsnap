@@ -1,10 +1,10 @@
 {
   "name": "devsnap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Capture and reproduce development environments with one command.",
   "main": "src/config.js",
   "bin": {
-    "devsnap": "./bin/devsnap.js"
+    "devsnap": "bin/devsnap.js"
   },
   "keywords": [
     "cli",
